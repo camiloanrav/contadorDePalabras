@@ -1,0 +1,24 @@
+.cuerpo{
+    background: rgb(197,238,255);
+    background: linear-gradient(90deg, rgba(197,238,255,1) 0%, rgba(216,205,255,1) 100%);
+    font-family: monospace;
+    animation: mymove 60s infinite;
+}
+
+@keyframes mymove {
+    0%{
+        background: rgb(248, 197, 255);
+    }
+    25%{
+        background: rgb(197, 220, 255);
+    }
+    50%{
+        background: rgb(205, 255, 205);
+    }
+    75%{
+        background: rgb(255, 250, 205);
+    }
+    100%{
+        background: rgb(248, 197, 255);
+    }
+  }
