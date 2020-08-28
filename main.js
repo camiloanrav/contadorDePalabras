@@ -7,8 +7,6 @@ function mostrarValor(){
     var input = document.getElementById("input");
     var resultado = document.getElementById("resultado");
 
-    console.log(document.getElementById("inlineRadio1").checked);
-
     if(document.getElementById("inlineRadio1").checked){
         var codigos = input.value.split(/\n/);
     }else{
@@ -22,21 +20,20 @@ function mostrarValor(){
     }
 
     var codigosNumerados = [];
-    let codigoAnterior = null;
-
+    
     for(let i = 0; i < codigos.length; i ++){
-        if(codigoAnterior != codigos[i]){
             let aux = codigos.filter((value)=>{
                 return value == codigos[i];
             });
             codigosNumerados.push({'codigo':codigos[i], 'cantidad': aux.length});
-        }
-        codigoAnterior = codigos[i];
+            i += aux.length - 1;
     }
+
+    codigosNumerados.sort((a, b) => b.cantidad - a.cantidad)
 
     resultado.innerHTML = "";
     let color = "list-group-item-dark";
-
+    resultado.innerHTML += `<p>Cantidad de palabras: ${codigosNumerados.length}</p>`;
     for(let i = 0; i < codigosNumerados.length; i ++){
         resultado.innerHTML += `<li class="list-group-item d-flex justify-content-between align-items-center  ${i%2===0?color:''}">
             ${codigosNumerados[i].codigo}
